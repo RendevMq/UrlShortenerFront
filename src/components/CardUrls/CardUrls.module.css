@@ -1,0 +1,73 @@
+.card {
+    background-color: var(--secondary-color);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    width: 300px;
+    margin: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .originalUrl {
+    font-size: 0.9rem;
+    color: #ddd;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .shortUrlSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .shortUrl {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .shortUrl svg {
+    margin-left: 5px;
+  }
+  
+  .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .views {
+    display: flex;
+    align-items: center;
+  }
+  
+  .views svg {
+    margin-right: 5px;
+  }
+  
+  .timeAgo {
+    font-size: 0.8rem;
+    color: #ccc;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .icon {
+    cursor: pointer;
+    color: #ffffff;
+    transition: color 0.3s ease;
+  }
+  
+  .icon:hover {
+    color: var(--primary-color);
+  }
+  

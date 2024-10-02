@@ -1,0 +1,9 @@
+.contentUrls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajusta las columnas automáticamente */
+  gap: 32px 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  justify-items: center; /* Asegura que las tarjetas estén centradas */
+  padding: 20px;
+}

@@ -1,0 +1,91 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--background-color-nav);
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+.sourceCodeBtn {
+  display: inline-flex;
+  align-items: center;
+  background-color: #333; /* Fondo oscuro */
+  color: #fff; /* Texto blanco */
+  border: 2px solid #333; /* Borde oscuro */
+  border-radius: 5px;
+  padding: 4px 12px;
+  text-decoration: none; /* Quitar subrayado del enlace */
+  transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.sourceCodeBtn:hover {
+  background-color: #fff; /* Fondo blanco en hover */
+  color: #333; /* Texto oscuro en hover */
+  border-color: #fff; /* Borde blanco en hover */
+  transform: scale(1.03); /* Efecto de aumento en hover */
+}
+
+.buttonText {
+  margin-left: 8px; /* Espacio entre el ícono y el texto */
+}
+  
+  .themeSwitch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .toggleCheckbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .toggleLabel {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .toggleLabel:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  .toggleCheckbox:checked + .toggleLabel {
+    background-color: #2196F3;
+  }
+  
+  .toggleCheckbox:checked + .toggleLabel:before {
+    transform: translateX(26px);
+  }
