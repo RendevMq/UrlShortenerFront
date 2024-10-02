@@ -1,0 +1,10 @@
+.header {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .title {
+    color: var(--primary-color);
+    font-size: var(--font-size-large);
+  }
+  
