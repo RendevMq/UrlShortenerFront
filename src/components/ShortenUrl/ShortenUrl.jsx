@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./ShortenUrl.module.css";
 import LinkCopy from "../LinkCopy/LinkCopy";
+import UrlContext from "../../context/urlContext";
+import { LanguageContext } from "../../context/LanguageContext";
 
 const link = import.meta.env.VITE_API_BASE_URL;
 
 const ShortenUrl = () => {
   const [url, setUrl] = useState("");
-  const [shortenedUrl, setShortenedUrl] = useState("");
-
+  const { shortenedUrl, setShortenedUrl } = useContext(UrlContext);
+  const { t } = useContext(LanguageContext);
   const handleShorten = async () => {
     try {
       const response = await fetch(`${link}/shorten`, {
@@ -35,13 +37,13 @@ const ShortenUrl = () => {
       <div className={styles.shortenUrl}>
         <input
           type="text"
-          placeholder="Enter your long URL"
+          placeholder={t.enter_url}
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           className={styles.input}
         />
         <button onClick={handleShorten} className={styles.button}>
-          Shorten URL
+          {t.shorten_button}
         </button>
       </div>
       {shortenedUrl && <LinkCopy url={shortenedUrl} />}

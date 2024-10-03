@@ -11,14 +11,14 @@
   right: 0;
   z-index: 1000;
 }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-  }
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
 
 .sourceCodeBtn {
   display: inline-flex;
@@ -44,48 +44,51 @@
 .buttonText {
   margin-left: 8px; /* Espacio entre el ícono y el texto */
 }
-  
-  .themeSwitch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-  
-  .toggleCheckbox {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .toggleLabel {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;
-  }
-  
-  .toggleLabel:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-  }
-  
-  .toggleCheckbox:checked + .toggleLabel {
-    background-color: #2196F3;
-  }
-  
-  .toggleCheckbox:checked + .toggleLabel:before {
-    transform: translateX(26px);
-  }
+
+.languageSwitch {
+  position: relative;
+  display: flex; /* Flexbox para alinear la bandera y el switch */
+  align-items: center; /* Alineación vertical */
+  gap: 10px; /* Espacio entre el switch y la bandera */
+}
+
+.languageSwitch img {
+  width: 35px; /* Ajusta el tamaño de la bandera */
+  height: auto;
+}
+
+.toggleCheckbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggleLabel {
+  position: relative;
+  cursor: pointer;
+  width: 50px;
+  height: 26px;
+  background-color: #ccc;
+  transition: background-color 0.4s;
+  border-radius: 50px; /* Borde completamente redondeado */
+}
+
+.toggleLabel:before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: white;
+  transition: 0.4s;
+  top: 2px;
+  left: 2px;
+}
+
+.toggleCheckbox:checked + .toggleLabel {
+  background-color: #2196F3; /* Color azul cuando está activo */
+}
+
+.toggleCheckbox:checked + .toggleLabel:before {
+  transform: translateX(24px); /* Desliza el círculo al lado derecho */
+}

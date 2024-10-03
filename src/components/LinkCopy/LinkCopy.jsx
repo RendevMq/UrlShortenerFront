@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Copy, CheckCircle, BarChart2 } from "lucide-react";
 import styles from "./LinkCopy.module.css";
+import { LanguageContext } from "../../context/LanguageContext";
 
 const LinkCopy = ({ url }) => {
   const [copied, setCopied] = useState(false);
-
+  const { t } = useContext(LanguageContext);
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(url);
@@ -33,7 +34,7 @@ const LinkCopy = ({ url }) => {
       <div className={styles.buttonGroup}>
         <button onClick={handleStats} className={styles.button}>
           <BarChart2 className={styles.icon} />
-          <span>Stats</span>
+          <span>{t.stats}</span>
         </button>
         <button onClick={copyToClipboard} className={styles.button}>
           {copied ? (
@@ -41,7 +42,7 @@ const LinkCopy = ({ url }) => {
           ) : (
             <Copy className={styles.icon} />
           )}
-          <span>Copy</span>
+          <span>{t.copy}</span>
         </button>
       </div>
     </div>
