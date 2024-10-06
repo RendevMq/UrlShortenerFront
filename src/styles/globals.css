@@ -30,8 +30,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(1, 0, 15, 0.895);  /*Cambia a un color con transparencia si deseas */
-    opacity: 0.9; /* Puedes ajustar la opacidad según lo que necesites */
+    background-color: rgba(0, 0, 0, 0.975);  /*Cambia a un color con transparencia si deseas */
+    opacity: 0.91; /* Puedes ajustar la opacidad según lo que necesites */
     backdrop-filter: blur(150px); /* Ajusta el valor del blur según necesites */
     mix-blend-mode: overlay;
   }
@@ -40,8 +40,26 @@ body {
     margin: 20px auto;
   }
 
-  .infoup div:first-child {
-    margin-bottom: 40px;
+  .infoup > div:first-child {
+    margin-bottom: 30px;
+    display: flex;
+    row-gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .infoup div h1 span{
+    color: var(--primary-color);
+    
+  }
+
+  .infoup div  h1 span:nth-child(2){
+    color: var(--secondary-color);
+  }
+
+  .infoup h1 {
+    font-size: var(--font-size-title);
   }
 
   .container {
@@ -51,9 +69,10 @@ body {
     /* padding: 20px; */
     /* background-color: black; */
     text-align: center;
-    font-size: var(--font-size-title);
+    /* font-size: var(--font-size-title); */
     position: relative;
     z-index: 100;
+    
   }
 
   .container p {

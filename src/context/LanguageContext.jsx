@@ -1,5 +1,6 @@
 import { useState, createContext } from "react";
 import translations from "../components/Translations/translations";
+import translationsStats from "../components/Translations/translationsStats";
 
 // Crear el contexto
 export const LanguageContext = createContext();
@@ -15,7 +16,12 @@ export const LanguageProvider = ({ children }) => {
 
   return (
     <LanguageContext.Provider
-      value={{ language, changeLanguage, t: translations[language] }}
+      value={{
+        language,
+        changeLanguage,
+        t: translations[language],
+        tStats: translationsStats[language],
+      }}
     >
       {children}
     </LanguageContext.Provider>

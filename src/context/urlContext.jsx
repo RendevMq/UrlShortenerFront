@@ -8,6 +8,7 @@ const UrlProvider = ({ children }) => {
   const [shortenedUrl, setShortenedUrl] = useState("");
 
   const [data, setData] = useState([]);
+  const [stats, setStats] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -50,6 +51,28 @@ const UrlProvider = ({ children }) => {
     }
   };
 
+  const fetchStats = async (shortUrl) => {
+    try {
+      setLoading(true);
+      const response = await fetch(`${shortUrl}/stats`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al obtener las estadísticas del enlace");
+      }
+      const result = await response.json();
+      setStats(result); // Aquí guardamos los datos obtenidos
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchData(); // Obtener datos al montar el componente
   }, []);
@@ -62,8 +85,10 @@ const UrlProvider = ({ children }) => {
     shortenedUrl,
     setShortenedUrl,
     data,
+    stats,
     fetchData,
     deleteUrl,
+    fetchStats,
     loading,
     error,
   };

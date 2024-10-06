@@ -1,0 +1,112 @@
+.modalAll {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #2c2f33; /* Fondo oscuro elegante */
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    color: #f1f1f1;
+}
+
+.contentCardModal {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between; /* Distribuye los elementos */
+    align-items: center;
+    background-color: #23272a; 
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.contentCardModal:hover {
+    transform: scale(1.02); /* Efecto hover */
+}
+
+.infoLinks {
+    text-align: start;
+    color: #f1f1f1;
+}
+
+.infoLinks h3 {
+    font-size: 1.2rem;
+    color: #f39c12; /* Color dorado */
+}
+
+.infoLinks p {
+    font-size: 1rem;
+    color: #99aab5;
+    max-width: 250px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* Propiedad con prefijo webkit */
+    line-clamp: 2; /*Este es el soporte futuro esperado, pero aún no es estándar*/
+    line-height: 1.5;
+    height: 3em;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}
+
+
+
+.buttonsCard {
+    display: flex;
+    gap: 10px;
+}
+
+.visitButton {
+    background-color: #b55c01; /* Azul */
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.visitButton:hover {
+    background-color: #1c74d1; /* Un azul más oscuro */
+}
+
+.statsNumbersAll {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+
+.statsNumbers {
+    background-color: #23272a; /* Fondo oscuro */
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    transition: transform 0.3s ease-in-out; /* Animación */
+}
+
+.statsNumbers:hover {
+    transform: scale(1.02); /* Efecto hover */
+}
+
+.statsNumbers h3 {
+    font-size: 1.2rem;
+    color: #f39c12; /* Color dorado */
+}
+
+.statsNumbers span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+    color: #99aab5;
+}
+
+.views svg {
+    color: #f39c12; /* Íconos dorados */
+}

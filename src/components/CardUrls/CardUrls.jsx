@@ -3,13 +3,19 @@ import useUrlActions from "../../hooks/useUrlActions ";
 import styles from "./CardUrls.module.css";
 import { Eye, Trash2, Copy, ExternalLink, View } from "lucide-react";
 import UrlContext from "../../context/urlContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { notify1, notify2 } from "../../helpers/notify";
+import { LanguageContext } from "../../context/LanguageContext";
 
 const CardUrls = ({ shortcode, originalUrl, shortUrl, views, timeAgo }) => {
   const { fetchData, deleteUrl } = useContext(UrlContext);
+  const { language } = useContext(LanguageContext);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(shortUrl);
-    alert("URL Copiada!");
+    // alert("URL Copiada!");
+    notify1(language);
   };
 
   useEffect(() => {
@@ -18,6 +24,7 @@ const CardUrls = ({ shortcode, originalUrl, shortUrl, views, timeAgo }) => {
 
   const handleDelete = async () => {
     try {
+      notify2(language);
       // Eliminar la URL pasando el shortCode correcto
       await deleteUrl(shortcode);
       // Después de eliminar, vuelve a obtener los datos actualizados
@@ -51,14 +58,14 @@ const CardUrls = ({ shortcode, originalUrl, shortUrl, views, timeAgo }) => {
           target="_blank"
           rel="noopener noreferrer"
           className={styles.shortUrl}
-          onClick={handleLinkClick} // Llama a fetchData después de hacer clic en el enlace
+          onClick={handleLinkClick}
         >
           {shortUrl} <ExternalLink size={16} />
         </a>
       </div>
       <div className={styles.info}>
         <span className={styles.views}>
-          <Eye size={16} /> {views} {/* Aquí se muestra el número de vistas */}
+          <Eye size={16} /> {views} {/* número de vistas */}
         </span>
         <span className={styles.timeAgo}>{timeAgo}</span>
         <div className={styles.actions}>

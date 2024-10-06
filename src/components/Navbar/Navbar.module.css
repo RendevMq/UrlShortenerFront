@@ -10,6 +10,19 @@
   left: 0;
   right: 0;
   z-index: 1000;
+  animation: enhance-header linear both;
+  animation-timeline: scroll(root block); /*block se pone porque nos referimos al scroll vertical*/
+
+  animation-range: 0 100px; /*rango para la animacion..sino tendriamos que esperar hasta el final del scroll - se demora mucho*/
+}
+
+@keyframes enhance-header {
+  to{
+    background: rgba(1, 12, 67, 0.959);
+    backdrop-filter: blur(5px);
+    /* font-size: 1.5em; */
+    /* color: black !important */
+  }
 }
 
 .logo {

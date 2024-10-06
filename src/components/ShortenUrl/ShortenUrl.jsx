@@ -10,7 +10,14 @@ const ShortenUrl = () => {
   const [url, setUrl] = useState("");
   const { shortenedUrl, setShortenedUrl } = useContext(UrlContext);
   const { t } = useContext(LanguageContext);
+  const [errorType, setErrorType] = useState(null);
+
   const handleShorten = async () => {
+    if (url.trim() === "") {
+      setShortenedUrl(null);
+      setErrorType("empty_url");
+      return;
+    }
     try {
       const response = await fetch(`${link}/shorten`, {
         method: "POST",
@@ -19,34 +26,47 @@ const ShortenUrl = () => {
         },
         body: JSON.stringify({ originalUrl: url }),
       });
-
       if (!response.ok) {
         throw new Error("Failed to shorten URL");
       }
-
       const data = await response.json();
-      setShortenedUrl(data.shortUrl); // Asumiendo que el campo es 'shortUrl' en la respuesta
-      console.log(`Shortened URL: ${data.shortUrl}`);
-    } catch (error) {
-      console.error("Error:", error);
+      setShortenedUrl(data.shortUrl);
+      setErrorType(null);
+    } catch (er) {
+      setErrorType("invalid_url");
+      setShortenedUrl(null);
+      console.error("Error:", er);
     }
+  };
+
+  const getErrorMessage = () => {
+    if (errorType === "empty_url") {
+      return t.must_enter_url;
+    }
+    if (errorType === "invalid_url") {
+      return t.must_enter_valid_url;
+    }
+    return null;
   };
 
   return (
     <>
       <div className={styles.shortenUrl}>
-        <input
-          type="text"
-          placeholder={t.enter_url}
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          className={styles.input}
-        />
-        <button onClick={handleShorten} className={styles.button}>
-          {t.shorten_button}
-        </button>
+        <div className={styles.shortenInputButton}>
+          <input
+            type="text"
+            placeholder={t.enter_url}
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            className={styles.input}
+          />
+          <button onClick={handleShorten} className={styles.button}>
+            {t.shorten_button}
+          </button>
+        </div>
+        {errorType && <p className={styles.errorr}>{getErrorMessage()}</p>}
+        {shortenedUrl && <LinkCopy url={shortenedUrl} />}
       </div>
-      {shortenedUrl && <LinkCopy url={shortenedUrl} />}
     </>
   );
 };

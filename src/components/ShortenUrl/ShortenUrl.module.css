@@ -1,31 +1,46 @@
+
 .shortenUrl {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 20px 0;
     background-color: rgba(0, 0, 0, 0.502);
     padding: 20px;
-    max-width: 60%;
+    max-width: 80%;
     margin: 0 auto;
     border-radius: 10px;
-    
+    row-gap: 10px;
+  }
+
+  .errorr{
+    color: var(--secondary-color);
+  }
+  .shortenInputButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
   }
   
   .input {
-    padding: 10px;
-    width: 300px;
+    padding: 12px;
+    flex: 8;
     border-radius: var(--border-radius);
     border: 1px solid var(--secondary-color);
     margin-right: 10px;
+    font-size: var(--font-size-chicas);
   }
   
   .button {
+    flex: 2;
     background-color: var(--primary-color);
     color: var(--text-color);
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
     border-radius: var(--border-radius);
     cursor: pointer;
+    font-size: var(--font-size-chicas);
   }
   
   .button:hover {
