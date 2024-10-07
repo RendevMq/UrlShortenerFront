@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className={styles.logo}>
         RENDEVMQ
         <a
-          href="https://github.com/RendevMq/Java-Apirest"
+          href="https://github.com/RendevMq/Backend-Projects-Java/tree/main/Int13URLShorteningService"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.sourceCodeBtn}

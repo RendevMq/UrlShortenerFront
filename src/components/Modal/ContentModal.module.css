@@ -68,7 +68,7 @@
 }
 
 .visitButton:hover {
-    background-color: #1c74d1; /* Un azul más oscuro */
+    background-color: #3455b6; /* Un azul más oscuro */
 }
 
 .statsNumbersAll {
@@ -87,7 +87,7 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
-    transition: transform 0.3s ease-in-out; /* Animación */
+    transition: transform 0.3s ease-in-out; 
 }
 
 .statsNumbers:hover {

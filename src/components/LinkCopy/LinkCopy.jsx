@@ -4,14 +4,14 @@ import styles from "./LinkCopy.module.css";
 import { LanguageContext } from "../../context/LanguageContext";
 import Modal from "../Modal/Modal";
 import ContentModal from "../Modal/ContentModal";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify1 } from "../../helpers/notify";
+import UrlContext from "../../context/urlContext";
 
 const LinkCopy = ({ url }) => {
   const [copied, setCopied] = useState(false);
   const [ventanaModal, setVentanaModal] = useState(false);
-
+  const { fetchData } = useContext(UrlContext);
   const { t, language } = useContext(LanguageContext);
   const copyToClipboard = async () => {
     try {
@@ -19,10 +19,8 @@ const LinkCopy = ({ url }) => {
       await navigator.clipboard.writeText(url);
       setCopied(true);
 
-      // Mostrar la notificación después de copiar el texto
       notify1(language);
 
-      // Volver a cambiar el estado después de 2 segundos para restaurar el icono
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy: ", err);
@@ -32,6 +30,12 @@ const LinkCopy = ({ url }) => {
   const handleStats = () => {
     setVentanaModal(true);
     console.log("Mostrar estadísticas para:", url);
+  };
+
+  const handleLinkClick = async () => {
+    setTimeout(async () => {
+      await fetchData();
+    }, 3000);
   };
 
   return (
@@ -46,6 +50,7 @@ const LinkCopy = ({ url }) => {
         className={styles.link}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={handleLinkClick} // Se ejecuta la función al hacer clic
       >
         {url}
       </a>

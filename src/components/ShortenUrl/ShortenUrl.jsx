@@ -19,7 +19,7 @@ const ShortenUrl = () => {
       return;
     }
     try {
-      const response = await fetch(`${link}/shorten`, {
+      const response = await fetch(`${link}/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

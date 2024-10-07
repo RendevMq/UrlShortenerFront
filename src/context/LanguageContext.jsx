@@ -7,7 +7,7 @@ export const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
   // Estado para almacenar el idioma seleccionado, por defecto 'en'
-  const [language, setLanguage] = useState("es");
+  const [language, setLanguage] = useState("en");
 
   // Función para cambiar el idioma
   const changeLanguage = (lang) => {

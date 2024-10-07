@@ -4,29 +4,41 @@ import { Eye, View, Clock } from "lucide-react";
 import UrlContext from "../../context/urlContext";
 import timeAgo from "../../helpers/timeAgo"; // Utiliza tu función para mostrar tiempo relativo
 import { LanguageContext } from "../../context/LanguageContext";
+import { notify1 } from "../../helpers/notify";
 
 const link = import.meta.env.VITE_API_BASE_URL;
 
 const CardContentModal = ({ typeLink, link }) => {
-  const { tStats } = useContext(LanguageContext); // Acceder a las traducciones de estadísticas
-
+  const { tStats, language } = useContext(LanguageContext);
+  const { fetchData } = useContext(UrlContext);
   // Función para copiar el enlace al portapapeles
   const handleCopy = () => {
     navigator.clipboard
       .writeText(link)
       .then(() => {
-        alert(tStats.copied_success); // Usar traducción específica
+        notify1(language);
       })
       .catch(() => {
-        alert(tStats.copied_error); // Usar traducción específica
+        alert(tStats.copied_error);
       });
   };
 
   // Función para visitar el enlace
   const handleVisit = () => {
     const newWindow = window.open(link, "_blank");
-    if (newWindow) {
-      newWindow.opener = null;
+
+    try {
+      if (newWindow) {
+        newWindow.opener = null;
+      }
+      setTimeout(async () => {
+        await fetchData();
+      }, 3000);
+    } catch (error) {
+      console.error(
+        "Error al actualizar los datos después de hacer clic:",
+        error
+      );
     }
   };
 
@@ -73,18 +85,17 @@ const ContentModal = ({ url }) => {
       />
       <CardContentModal
         typeLink={tStats.shortened_link}
-        link={`${link}/shorten/${stats.shortCode}`}
+        link={`${link}/${stats.shortCode}`}
       />
       <div className={styles.statsNumbersAll}>
         <div className={styles.statsNumbers}>
-          <h3>{tStats.views}</h3> {/* Traducción específica para "Vistas" */}
+          <h3>{tStats.views}</h3>
           <span className={styles.views}>
             <Eye size={16} /> {stats.accessCount} {tStats.views}
           </span>
         </div>
         <div className={styles.statsNumbers}>
           <h3>{tStats.generated_at}</h3>{" "}
-          {/* Traducción específica para "Generado inicialmente" */}
           <span className={styles.views}>
             <Clock size={16} /> {timeAgo(stats.createdAt)}
           </span>

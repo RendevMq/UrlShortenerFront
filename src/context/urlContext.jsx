@@ -17,7 +17,7 @@ const UrlProvider = ({ children }) => {
 
     setLoading(true);
     try {
-      const response = await fetch(`${link}/shorten/findAll`, {
+      const response = await fetch(`${link}/findAll`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
